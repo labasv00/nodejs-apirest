@@ -1,0 +1,23 @@
+{
+  "name": "apirest",
+  "version": "1.0.0",
+  "description": "Repositorio de Nodejs para la asignatura de Ecosistemas Móviles y Distribuidos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/labasv00/nodejs-apirest.git"
+  },
+  "keywords": [
+    "API",
+    "REST"
+  ],
+  "author": "León Abascal Villa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/labasv00/nodejs-apirest/issues"
+  },
+  "homepage": "https://github.com/labasv00/nodejs-apirest#readme"
+}
