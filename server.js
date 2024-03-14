@@ -5,6 +5,9 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var sanitize = require('mongo-sanitize');
 
+var authCtrl = require('./auth/auth');
+var middleware = require('./auth/middleware');
+
 //añadimos el modelo
 var Device = require('./models/device');
 var app = express();
@@ -26,8 +29,12 @@ app.get('/devices', function (req, res) {
     });
 });
 
+app.post('/auth/login', authCtrl.aliasLogin);
+
 //peticion GET para obtener los datos de un dispositivo por su tipo
-app.get('/devices/:type', async (req, res) => {
+app.get('/devices/:type',
+    middleware.ensureAuthenticated,
+    async (req, res) => {
     try {
         console.log(JSON.stringify(req.params, null, 2));
         // Realiza la búsqueda con un filtro, por ejemplo, {"type": "temperature"}
