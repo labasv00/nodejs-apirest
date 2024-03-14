@@ -19,5 +19,6 @@ exports.ensureAuthenticated = function (req, res, next) {
             });
     }
     req.user = payload.sub;
+    console.log("payload.sub: " + req.user)
     next();
 };
