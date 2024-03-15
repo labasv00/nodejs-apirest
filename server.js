@@ -4,6 +4,9 @@ var cors = require('cors');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
+// MQTT
+const mqttBroker = require('./services/broker');
+
 // Routes
 var deviceRoutes = require('./routes/routerDevices');
 var authCtrl = require('./auth/auth');
@@ -36,3 +39,5 @@ app.post('/auth/login', authCtrl.aliasLogin);
 app.listen(port, function () {
     console.log('Servidor node.js corriendo en el puerto ' + port);
 });
+
+mqttBroker.startBroker();
