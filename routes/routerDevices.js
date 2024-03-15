@@ -15,9 +15,9 @@ router.post('/', deviceControllers.createDevice);
 router.get('/:type', middleware.ensureAuthenticated,
     deviceControllers.getDeviceByType);
 // PUT request to /devices/:type
-router.put('/:type', deviceControllers.updateDeviceByType);
+router.put('/:id', deviceControllers.updateDeviceById);
 // DELETE request to /devices/:type
-router.delete('/:type', deviceControllers.deleteDevice);
+router.delete('/:id', deviceControllers.deleteDevice);
 // POST request to /devices/find
 router.post('/find', deviceControllers.findDevices);
 module.exports = router; 

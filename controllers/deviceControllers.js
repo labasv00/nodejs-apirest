@@ -3,10 +3,10 @@ var sanitize = require('mongo-sanitize');
 
 exports.deleteDevice = async (req, res) => {
     try {
-        const clean_params = sanitize(req.params)
 
-        const device = await Device.findOneAndDelete({
-            type: clean_params.type
+        const clean_params = sanitize(req.params)
+        const device = await Device.findByIdAndDelete({
+            _id: clean_params.id
         }).exec();
         res.json({
             msg: 'Dispositivo borrado correctamente',
@@ -56,11 +56,13 @@ exports.getDeviceByType = async (req, res) => {
         });
     }
 };
-exports.updateDeviceByType = async (req, res) => {
+exports.updateDeviceById = async (req, res) => {
     try {
         const clean_body = sanitize(req.body)
         const clean_params = sanitize(req.params)
-        const device = await Device.findOneAndUpdate(clean_params,
+        const device = await Device.findByIdAndUpdate({
+                _id: clean_params.id
+            },
             clean_body).exec();
         res.json({
             msg: 'Dispositivo actualizado correctamente',
